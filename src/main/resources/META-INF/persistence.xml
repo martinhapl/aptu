@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.2" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd">
+  <!-- Define Persistence Unit -->
+  <persistence-unit name="APTU_EJB">
+    <jta-data-source>java:/jdbc/aptu</jta-data-source>
+    <class>net.hapl.aptu.ejb.entity.Employee</class>
+    <class>net.hapl.aptu.ejb.entity.Subject</class>
+    <properties>
+      <property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>
+      <!--
+      <property name="jboss.entity.manager.jndi.name" value="java:/EntityManager/erms"/>
+            <property name="hibernate.dialect_resolvers" value="cz.mit_consulting.erms.util.startup.MyDialectResolver"/>
+            <property name="hibernate.hbm2ddl.auto" value="none"/>
+            <property name="hibernate.cache.provider_class" value="org.hibernate.cache.HashtableCacheProvider"/>
+            <property name="hibernate.treecache.mbean.object_name" value="jboss.cache:service=EJB3EntityTreeCache"/>
+            <property name="hibernate.cache.use_second_level_cache" value="false"/>
+            <property name="hibernate.cache.use_query_cache" value="false"/>
+            <property name="hibernate.show_sql" value="false"/>
+            <property name="javax.persistence.jtaDataSource" value="java:jboss/jdbc/erms"/>
+            <property name="hibernate.ejb.event.post-insert"
+                      value="cz.longit.erms.ejb.audit.EntityChangeEventListener"/>
+            <property name="hibernate.ejb.event.post-update"
+                      value="cz.longit.erms.ejb.audit.EntityChangeEventListener"/>
+            <property name="hibernate.ejb.event.post-delete"
+                      value="cz.longit.erms.ejb.audit.EntityChangeEventListener"/>
+            <property name="hibernate.ejb.event.pre-collection-update"
+                      value="cz.longit.erms.ejb.audit.EntityChangeEventListener"/>
+            <property name="hibernate.ejb.event.pre-collection-remove"
+                      value="cz.longit.erms.ejb.audit.EntityChangeEventListener"/>
+            <property name="hibernate.ejb.event.post-collection-recreate"
+                      value="cz.longit.erms.ejb.audit.EntityChangeEventListener"/>
+            <property name="hibernate.query.substitutions" value="true 1, false 0"/>
+            <property name="hibernate.use_sql_comments" value="true" />      
+      -->
+    </properties>
+  </persistence-unit>
+</persistence>
