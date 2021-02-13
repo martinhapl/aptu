@@ -31,34 +31,38 @@ public class Subject implements Serializable {
     @Column(length = 255, name = "name", nullable = false)
     private String name;
     
+    @Column(name = "hoursOfLectures", nullable = false)
     private int hoursOfLectures;
     
+    @Column(name = "hoursOfSeminars", nullable = false)
     private int hoursOfSeminars;
     
+    @Column(name = "hoursOfExercises", nullable = false)
     private int hoursOfExercises;
     
+    @Column(name = "numberOfWeeks", nullable = false)
     private int numberOfWeeks;
     
-    private String language;
+    @Column(name = "language", nullable = false)
+    private Enums.Lang language;
     
-    private String termination; // z, kz, zk
+    @Column(name = "termination", nullable = false)
+    private Enums.SubjectTermination termination; // z, kz, zk
     
+    @Column(name = "credits", nullable = false)
     private int credits;
     
+    @Column(name = "groupSize", nullable = false)
     private int groupSize;
     
     public Long getId() {
         return id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
+        hash += (getId() != null ? getId().hashCode() : 0);
         return hash;
     }
 
@@ -69,7 +73,7 @@ public class Subject implements Serializable {
             return false;
         }
         Subject other = (Subject) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+        if ((this.getId() == null && other.getId() != null) || (this.getId() != null && !this.id.equals(other.id))) {
             return false;
         }
         return true;
@@ -77,7 +81,147 @@ public class Subject implements Serializable {
 
     @Override
     public String toString() {
-        return "net.hapl.test.app1.ejb.entity.Subject[ id=" + id + " ]";
+        return "net.hapl.aptu.ejb.entity.Subject[ id=" + getId() + " ]";
+    }
+
+    /**
+     * @return the shortcut
+     */
+    public String getShortcut() {
+        return shortcut;
+    }
+
+    /**
+     * @param shortcut the shortcut to set
+     */
+    public void setShortcut(String shortcut) {
+        this.shortcut = shortcut;
+    }
+
+    /**
+     * @return the name
+     */
+    public String getName() {
+        return name;
+    }
+
+    /**
+     * @param name the name to set
+     */
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    /**
+     * @return the hoursOfLectures
+     */
+    public int getHoursOfLectures() {
+        return hoursOfLectures;
+    }
+
+    /**
+     * @param hoursOfLectures the hoursOfLectures to set
+     */
+    public void setHoursOfLectures(int hoursOfLectures) {
+        this.hoursOfLectures = hoursOfLectures;
+    }
+
+    /**
+     * @return the hoursOfSeminars
+     */
+    public int getHoursOfSeminars() {
+        return hoursOfSeminars;
+    }
+
+    /**
+     * @param hoursOfSeminars the hoursOfSeminars to set
+     */
+    public void setHoursOfSeminars(int hoursOfSeminars) {
+        this.hoursOfSeminars = hoursOfSeminars;
+    }
+
+    /**
+     * @return the hoursOfExercises
+     */
+    public int getHoursOfExercises() {
+        return hoursOfExercises;
+    }
+
+    /**
+     * @param hoursOfExercises the hoursOfExercises to set
+     */
+    public void setHoursOfExercises(int hoursOfExercises) {
+        this.hoursOfExercises = hoursOfExercises;
+    }
+
+    /**
+     * @return the numberOfWeeks
+     */
+    public int getNumberOfWeeks() {
+        return numberOfWeeks;
+    }
+
+    /**
+     * @param numberOfWeeks the numberOfWeeks to set
+     */
+    public void setNumberOfWeeks(int numberOfWeeks) {
+        this.numberOfWeeks = numberOfWeeks;
+    }
+
+    /**
+     * @return the language
+     */
+    public Enums.Lang getLanguage() {
+        return language;
+    }
+
+    /**
+     * @param language the language to set
+     */
+    public void setLanguage(Enums.Lang language) {
+        this.language = language;
+    }
+
+    /**
+     * @return the termination
+     */
+    public Enums.SubjectTermination getTermination() {
+        return termination;
+    }
+
+    /**
+     * @param termination the termination to set
+     */
+    public void setTermination(Enums.SubjectTermination termination) {
+        this.termination = termination;
+    }
+
+    /**
+     * @return the credits
+     */
+    public int getCredits() {
+        return credits;
+    }
+
+    /**
+     * @param credits the credits to set
+     */
+    public void setCredits(int credits) {
+        this.credits = credits;
+    }
+
+    /**
+     * @return the groupSize
+     */
+    public int getGroupSize() {
+        return groupSize;
+    }
+
+    /**
+     * @param groupSize the groupSize to set
+     */
+    public void setGroupSize(int groupSize) {
+        this.groupSize = groupSize;
     }
     
 }

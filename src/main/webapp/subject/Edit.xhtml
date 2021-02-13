@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditSubjectTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditSubjectLabel_shortcut}" for="shortcut" />
+                    <h:inputText id="shortcut" value="#{subjectController.selected.shortcut}" title="#{bundle.EditSubjectTitle_shortcut}" required="true" requiredMessage="#{bundle.EditSubjectRequiredMessage_shortcut}"/>
+                    <h:outputLabel value="#{bundle.EditSubjectLabel_name}" for="name" />
+                    <h:inputText id="name" value="#{subjectController.selected.name}" title="#{bundle.EditSubjectTitle_name}" required="true" requiredMessage="#{bundle.EditSubjectRequiredMessage_name}"/>
+                    <h:outputLabel value="#{bundle.EditSubjectLabel_hoursOfLectures}" for="hoursOfLectures" />
+                    <h:inputText id="hoursOfLectures" value="#{subjectController.selected.hoursOfLectures}" title="#{bundle.EditSubjectTitle_hoursOfLectures}" required="true" requiredMessage="#{bundle.EditSubjectRequiredMessage_hoursOfLectures}"/>
+                    <h:outputLabel value="#{bundle.EditSubjectLabel_hoursOfSeminars}" for="hoursOfSeminars" />
+                    <h:inputText id="hoursOfSeminars" value="#{subjectController.selected.hoursOfSeminars}" title="#{bundle.EditSubjectTitle_hoursOfSeminars}" required="true" requiredMessage="#{bundle.EditSubjectRequiredMessage_hoursOfSeminars}"/>
+                    <h:outputLabel value="#{bundle.EditSubjectLabel_hoursOfExercises}" for="hoursOfExercises" />
+                    <h:inputText id="hoursOfExercises" value="#{subjectController.selected.hoursOfExercises}" title="#{bundle.EditSubjectTitle_hoursOfExercises}" required="true" requiredMessage="#{bundle.EditSubjectRequiredMessage_hoursOfExercises}"/>
+                    <h:outputLabel value="#{bundle.EditSubjectLabel_numberOfWeeks}" for="numberOfWeeks" />
+                    <h:inputText id="numberOfWeeks" value="#{subjectController.selected.numberOfWeeks}" title="#{bundle.EditSubjectTitle_numberOfWeeks}" required="true" requiredMessage="#{bundle.EditSubjectRequiredMessage_numberOfWeeks}"/>
+                    <h:outputLabel value="#{bundle.EditSubjectLabel_language}" for="language" />
+                    <h:selectOneMenu id="language" value="#{subjectController.selected.language}" title="#{bundle.CreateSubjectTitle_language}" required="true" requiredMessage="#{bundle.CreateSubjectRequiredMessage_language}">
+                        <f:selectItem itemValue="CS" itemLabel="Čeština"/>
+                        <f:selectItem itemValue="EN" itemLabel="Angličtina"/>
+                        <f:converter converterId = "net.hapl.aptu.jsf.converter.LangConverter" />
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditSubjectLabel_termination}" for="termination" />
+                    <h:selectOneMenu id="termination" value="#{subjectController.selected.termination}" title="#{bundle.CreateSubjectTitle_termination}" required="true" requiredMessage="#{bundle.CreateSubjectRequiredMessage_termination}">
+                        <f:selectItem itemValue="Z" itemLabel="Zápočet"/>
+                        <f:selectItem itemValue="KZ" itemLabel="Klasifikovaný zápočet"/>
+                        <f:selectItem itemValue="ZK" itemLabel="Zkouška"/>
+                        <f:converter converterId = "net.hapl.aptu.jsf.converter.SubjectTerminationConverter" />
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditSubjectLabel_credits}" for="credits" />
+                    <h:inputText id="credits" value="#{subjectController.selected.credits}" title="#{bundle.EditSubjectTitle_credits}" required="true" requiredMessage="#{bundle.EditSubjectRequiredMessage_credits}"/>
+                    <h:outputLabel value="#{bundle.EditSubjectLabel_groupSize}" for="groupSize" />
+                    <h:inputText id="groupSize" value="#{subjectController.selected.groupSize}" title="#{bundle.EditSubjectTitle_groupSize}" required="true" requiredMessage="#{bundle.EditSubjectRequiredMessage_groupSize}"/>
+                </h:panelGrid>
+                <h:commandLink action="#{subjectController.update}" value="#{bundle.EditSubjectSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditSubjectViewLink}"/>
+                <br />
+                <h:commandLink action="#{subjectController.prepareList}" value="#{bundle.EditSubjectShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditSubjectIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

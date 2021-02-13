@@ -40,6 +40,9 @@ public class Employee implements Serializable {
     @Column(length = 255, name = "email", nullable = false)
     private String email;
     
+    @Column(name = "doctoral_student", nullable = false)
+    private boolean doctoralStudent;
+    
     @Column(name = "working_time", nullable = false)
     private double workingTime;
 
@@ -69,7 +72,7 @@ public class Employee implements Serializable {
 
     @Override
     public String toString() {
-        return "net.hapl.test.app1.ejb.entity.Emplotee[ id=" + getId() + " ]";
+        return "net.hapl.aptu.ejb.entity.Emplotee[ id=" + getId() + " ]";
     }
 
 
@@ -155,6 +158,20 @@ public class Employee implements Serializable {
      */
     public void setWorkingTime(double workingTime) {
         this.workingTime = workingTime;
+    }
+
+    /**
+     * @return the doctoralStudent
+     */
+    public boolean isDoctoralStudent() {
+        return doctoralStudent;
+    }
+
+    /**
+     * @param doctoralStudent the doctoralStudent to set
+     */
+    public void setDoctoralStudent(boolean doctoralStudent) {
+        this.doctoralStudent = doctoralStudent;
     }
     
     
