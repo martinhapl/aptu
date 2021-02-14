@@ -163,7 +163,7 @@ public class Employee implements Serializable {
     /**
      * @return the doctoralStudent
      */
-    public boolean isDoctoralStudent() {
+    public boolean getDoctoralStudent() {
         return doctoralStudent;
     }
 

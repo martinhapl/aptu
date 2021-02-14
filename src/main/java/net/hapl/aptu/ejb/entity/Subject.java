@@ -8,6 +8,8 @@ package net.hapl.aptu.ejb.entity;
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -43,11 +45,18 @@ public class Subject implements Serializable {
     @Column(name = "numberOfWeeks", nullable = false)
     private int numberOfWeeks;
     
-    @Column(name = "language", nullable = false)
+    @Column(length = 2, name = "language", nullable = false)
+    @Enumerated(EnumType.STRING)
     private Enums.Lang language;
     
-    @Column(name = "termination", nullable = false)
-    private Enums.SubjectTermination termination; // z, kz, zk
+    @Column(name = "termination_credit", nullable = false)
+    private boolean terminationCredit; //  zapocet
+
+    @Column(name = "termination_clasif_credit", nullable = false)
+    private boolean terminationClasifCredit; // klasifikovany zapocet
+
+    @Column(name = "termination_exam", nullable = false)
+    private boolean terminationExam; // zkouska
     
     @Column(name = "credits", nullable = false)
     private int credits;
@@ -182,19 +191,6 @@ public class Subject implements Serializable {
         this.language = language;
     }
 
-    /**
-     * @return the termination
-     */
-    public Enums.SubjectTermination getTermination() {
-        return termination;
-    }
-
-    /**
-     * @param termination the termination to set
-     */
-    public void setTermination(Enums.SubjectTermination termination) {
-        this.termination = termination;
-    }
 
     /**
      * @return the credits
@@ -223,5 +219,49 @@ public class Subject implements Serializable {
     public void setGroupSize(int groupSize) {
         this.groupSize = groupSize;
     }
+
+    /**
+     * @return the terminationCredit
+     */
+    public boolean getTerminationCredit() {
+        return terminationCredit;
+    }
+
+    /**
+     * @param terminationCredit the terminationCredit to set
+     */
+    public void setTerminationCredit(boolean terminationCredit) {
+        this.terminationCredit = terminationCredit;
+    }
+
+    /**
+     * @return the terminationClasifCredit
+     */
+    public boolean getTerminationClasifCredit() {
+        return terminationClasifCredit;
+    }
+
+    /**
+     * @param terminationClasifCredit the terminationClasifCredit to set
+     */
+    public void setTerminationClasifCredit(boolean terminationClasifCredit) {
+        this.terminationClasifCredit = terminationClasifCredit;
+    }
+
+    /**
+     * @return the terminationExam
+     */
+    public boolean getTerminationExam() {
+        return terminationExam;
+    }
+
+    /**
+     * @param terminationExam the terminationExam to set
+     */
+    public void setTerminationExam(boolean terminationExam) {
+        this.terminationExam = terminationExam;
+    }
+    
+    
     
 }

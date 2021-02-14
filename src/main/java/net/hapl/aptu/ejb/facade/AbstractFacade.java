@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package net.hapl.aptu;
+package net.hapl.aptu.ejb.facade;
 
 import java.util.List;
 import javax.persistence.EntityManager;

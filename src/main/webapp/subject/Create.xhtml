@@ -33,17 +33,17 @@
                         <f:selectItem itemValue="EN" itemLabel="Angličtina"/>
                         <f:converter converterId = "net.hapl.aptu.jsf.converter.LangConverter" />
                     </h:selectOneMenu>
-                    <h:outputLabel value="#{bundle.CreateSubjectLabel_termination}" for="termination" />
-                    <h:selectOneMenu id="termination" value="#{subjectController.selected.termination}" title="#{bundle.CreateSubjectTitle_termination}" required="true" requiredMessage="#{bundle.CreateSubjectRequiredMessage_termination}">
-                        <f:selectItem itemValue="Z" itemLabel="Zápočet"/>
-                        <f:selectItem itemValue="KZ" itemLabel="Klasifikovaný zápočet"/>
-                        <f:selectItem itemValue="ZK" itemLabel="Zkouška"/>
-                        <f:converter converterId = "net.hapl.aptu.jsf.converter.SubjectTerminationConverter" />
-                    </h:selectOneMenu>
+
                     <h:outputLabel value="#{bundle.CreateSubjectLabel_credits}" for="credits" />
                     <h:inputText id="credits" value="#{subjectController.selected.credits}" title="#{bundle.CreateSubjectTitle_credits}" required="true" requiredMessage="#{bundle.CreateSubjectRequiredMessage_credits}"/>
                     <h:outputLabel value="#{bundle.CreateSubjectLabel_groupSize}" for="groupSize" />
                     <h:inputText id="groupSize" value="#{subjectController.selected.groupSize}" title="#{bundle.CreateSubjectTitle_groupSize}" required="true" requiredMessage="#{bundle.CreateSubjectRequiredMessage_groupSize}"/>
+                    <h:outputLabel value="#{bundle.CreateSubjectLabel_terminationCredit}" for="terminationCredit" />
+                    <h:inputText id="terminationCredit" value="#{subjectController.selected.terminationCredit}" title="#{bundle.CreateSubjectTitle_terminationCredit}" required="true" requiredMessage="#{bundle.CreateSubjectRequiredMessage_terminationCredit}"/>
+                    <h:outputLabel value="#{bundle.CreateSubjectLabel_terminationClasifCredit}" for="terminationClasifCredit" />
+                    <h:inputText id="terminationClasifCredit" value="#{subjectController.selected.terminationClasifCredit}" title="#{bundle.CreateSubjectTitle_terminationClasifCredit}" required="true" requiredMessage="#{bundle.CreateSubjectRequiredMessage_terminationClasifCredit}"/>
+                    <h:outputLabel value="#{bundle.CreateSubjectLabel_terminationExam}" for="terminationExam" />
+                    <h:inputText id="terminationExam" value="#{subjectController.selected.terminationExam}" title="#{bundle.CreateSubjectTitle_terminationExam}" required="true" requiredMessage="#{bundle.CreateSubjectRequiredMessage_terminationExam}"/>
                 </h:panelGrid>
                 <br />
                 <h:commandLink action="#{subjectController.create}" value="#{bundle.CreateSubjectSaveLink}" />

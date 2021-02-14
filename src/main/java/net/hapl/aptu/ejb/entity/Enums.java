@@ -27,26 +27,5 @@ public class Enums {
         
     }
     
-    // z, kz, zk
-    public enum SubjectTermination {
-        Z {
-            @Override
-            public String toString() {
-                return "Zápočet";
-            }
-        },
-        KZ {
-            @Override
-            public String toString() {
-                return "Klasifikovaný zápočet";
-            }
-        },
-        ZK {
-            @Override
-            public String toString() {
-                return "Zkouška";
-            }
-        };
-    }
     
 }

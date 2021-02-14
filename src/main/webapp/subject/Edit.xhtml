@@ -15,6 +15,8 @@
             </h:panelGroup>
             <h:form>
                 <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditSubjectLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{subjectController.selected.id}" title="#{bundle.EditSubjectTitle_id}" />
                     <h:outputLabel value="#{bundle.EditSubjectLabel_shortcut}" for="shortcut" />
                     <h:inputText id="shortcut" value="#{subjectController.selected.shortcut}" title="#{bundle.EditSubjectTitle_shortcut}" required="true" requiredMessage="#{bundle.EditSubjectRequiredMessage_shortcut}"/>
                     <h:outputLabel value="#{bundle.EditSubjectLabel_name}" for="name" />
@@ -28,22 +30,17 @@
                     <h:outputLabel value="#{bundle.EditSubjectLabel_numberOfWeeks}" for="numberOfWeeks" />
                     <h:inputText id="numberOfWeeks" value="#{subjectController.selected.numberOfWeeks}" title="#{bundle.EditSubjectTitle_numberOfWeeks}" required="true" requiredMessage="#{bundle.EditSubjectRequiredMessage_numberOfWeeks}"/>
                     <h:outputLabel value="#{bundle.EditSubjectLabel_language}" for="language" />
-                    <h:selectOneMenu id="language" value="#{subjectController.selected.language}" title="#{bundle.CreateSubjectTitle_language}" required="true" requiredMessage="#{bundle.CreateSubjectRequiredMessage_language}">
-                        <f:selectItem itemValue="CS" itemLabel="Čeština"/>
-                        <f:selectItem itemValue="EN" itemLabel="Angličtina"/>
-                        <f:converter converterId = "net.hapl.aptu.jsf.converter.LangConverter" />
-                    </h:selectOneMenu>
-                    <h:outputLabel value="#{bundle.EditSubjectLabel_termination}" for="termination" />
-                    <h:selectOneMenu id="termination" value="#{subjectController.selected.termination}" title="#{bundle.CreateSubjectTitle_termination}" required="true" requiredMessage="#{bundle.CreateSubjectRequiredMessage_termination}">
-                        <f:selectItem itemValue="Z" itemLabel="Zápočet"/>
-                        <f:selectItem itemValue="KZ" itemLabel="Klasifikovaný zápočet"/>
-                        <f:selectItem itemValue="ZK" itemLabel="Zkouška"/>
-                        <f:converter converterId = "net.hapl.aptu.jsf.converter.SubjectTerminationConverter" />
-                    </h:selectOneMenu>
+                    <h:inputText id="language" value="#{subjectController.selected.language}" title="#{bundle.EditSubjectTitle_language}" required="true" requiredMessage="#{bundle.EditSubjectRequiredMessage_language}"/>
                     <h:outputLabel value="#{bundle.EditSubjectLabel_credits}" for="credits" />
                     <h:inputText id="credits" value="#{subjectController.selected.credits}" title="#{bundle.EditSubjectTitle_credits}" required="true" requiredMessage="#{bundle.EditSubjectRequiredMessage_credits}"/>
                     <h:outputLabel value="#{bundle.EditSubjectLabel_groupSize}" for="groupSize" />
                     <h:inputText id="groupSize" value="#{subjectController.selected.groupSize}" title="#{bundle.EditSubjectTitle_groupSize}" required="true" requiredMessage="#{bundle.EditSubjectRequiredMessage_groupSize}"/>
+                    <h:outputLabel value="#{bundle.EditSubjectLabel_terminationCredit}" for="terminationCredit" />
+                    <h:inputText id="terminationCredit" value="#{subjectController.selected.terminationCredit}" title="#{bundle.EditSubjectTitle_terminationCredit}" required="true" requiredMessage="#{bundle.EditSubjectRequiredMessage_terminationCredit}"/>
+                    <h:outputLabel value="#{bundle.EditSubjectLabel_terminationClasifCredit}" for="terminationClasifCredit" />
+                    <h:inputText id="terminationClasifCredit" value="#{subjectController.selected.terminationClasifCredit}" title="#{bundle.EditSubjectTitle_terminationClasifCredit}" required="true" requiredMessage="#{bundle.EditSubjectRequiredMessage_terminationClasifCredit}"/>
+                    <h:outputLabel value="#{bundle.EditSubjectLabel_terminationExam}" for="terminationExam" />
+                    <h:inputText id="terminationExam" value="#{subjectController.selected.terminationExam}" title="#{bundle.EditSubjectTitle_terminationExam}" required="true" requiredMessage="#{bundle.EditSubjectRequiredMessage_terminationExam}"/>
                 </h:panelGrid>
                 <h:commandLink action="#{subjectController.update}" value="#{bundle.EditSubjectSaveLink}"/>
                 <br />

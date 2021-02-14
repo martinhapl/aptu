@@ -1,8 +1,5 @@
-package net.hapl.aptu;
+package net.hapl.aptu.jsf.bean;
 
-import net.hapl.aptu.ejb.entity.Subject;
-import net.hapl.aptu.util.JsfUtil;
-import net.hapl.aptu.util.PaginationHelper;
 
 import java.io.Serializable;
 import java.util.ResourceBundle;
@@ -16,33 +13,38 @@ import javax.faces.convert.FacesConverter;
 import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
 import javax.faces.model.SelectItem;
+import net.hapl.aptu.ejb.facade.EmployeeFacade;
+import net.hapl.aptu.ejb.entity.Employee;
+import net.hapl.aptu.util.JsfUtil;
+import net.hapl.aptu.util.PaginationHelper;
 
-@Named("subjectController")
+
+
+@Named("employeeController")
 @SessionScoped
-public class SubjectController implements Serializable {
+public class EmployeeController implements Serializable {
 
-    private Subject current;
+
+    private Employee current;
     private DataModel items = null;
-    @EJB
-    private net.hapl.aptu.SubjectFacade ejbFacade;
+    @EJB private net.hapl.aptu.ejb.facade.EmployeeFacade ejbFacade;
     private PaginationHelper pagination;
     private int selectedItemIndex;
 
-    public SubjectController() {
+    public EmployeeController() {
     }
 
-    public Subject getSelected() {
+    public Employee getSelected() {
         if (current == null) {
-            current = new Subject();
+            current = new Employee();
             selectedItemIndex = -1;
         }
         return current;
     }
 
-    private SubjectFacade getFacade() {
+    private EmployeeFacade getFacade() {
         return ejbFacade;
     }
-
     public PaginationHelper getPagination() {
         if (pagination == null) {
             pagination = new PaginationHelper(10) {
@@ -54,7 +56,7 @@ public class SubjectController implements Serializable {
 
                 @Override
                 public DataModel createPageDataModel() {
-                    return new ListDataModel(getFacade().findRange(new int[]{getPageFirstItem(), getPageFirstItem() + getPageSize()}));
+                    return new ListDataModel(getFacade().findRange(new int[]{getPageFirstItem(), getPageFirstItem()+getPageSize()}));
                 }
             };
         }
@@ -67,13 +69,13 @@ public class SubjectController implements Serializable {
     }
 
     public String prepareView() {
-        current = (Subject) getItems().getRowData();
+        current = (Employee)getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
         return "View";
     }
 
     public String prepareCreate() {
-        current = new Subject();
+        current = new Employee();
         selectedItemIndex = -1;
         return "Create";
     }
@@ -81,7 +83,7 @@ public class SubjectController implements Serializable {
     public String create() {
         try {
             getFacade().create(current);
-            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("SubjectCreated"));
+            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("EmployeeCreated"));
             return prepareCreate();
         } catch (Exception e) {
             JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
@@ -90,7 +92,7 @@ public class SubjectController implements Serializable {
     }
 
     public String prepareEdit() {
-        current = (Subject) getItems().getRowData();
+        current = (Employee)getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
         return "Edit";
     }
@@ -98,7 +100,7 @@ public class SubjectController implements Serializable {
     public String update() {
         try {
             getFacade().edit(current);
-            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("SubjectUpdated"));
+            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("EmployeeUpdated"));
             return "View";
         } catch (Exception e) {
             JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
@@ -107,7 +109,7 @@ public class SubjectController implements Serializable {
     }
 
     public String destroy() {
-        current = (Subject) getItems().getRowData();
+        current = (Employee)getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
         performDestroy();
         recreatePagination();
@@ -131,7 +133,7 @@ public class SubjectController implements Serializable {
     private void performDestroy() {
         try {
             getFacade().remove(current);
-            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("SubjectDeleted"));
+            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("EmployeeDeleted"));
         } catch (Exception e) {
             JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
         }
@@ -141,14 +143,14 @@ public class SubjectController implements Serializable {
         int count = getFacade().count();
         if (selectedItemIndex >= count) {
             // selected index cannot be bigger than number of items:
-            selectedItemIndex = count - 1;
+            selectedItemIndex = count-1;
             // go to previous page if last page disappeared:
             if (pagination.getPageFirstItem() >= count) {
                 pagination.previousPage();
             }
         }
         if (selectedItemIndex >= 0) {
-            current = getFacade().findRange(new int[]{selectedItemIndex, selectedItemIndex + 1}).get(0);
+            current = getFacade().findRange(new int[]{selectedItemIndex, selectedItemIndex+1}).get(0);
         }
     }
 
@@ -187,21 +189,21 @@ public class SubjectController implements Serializable {
         return JsfUtil.getSelectItems(ejbFacade.findAll(), true);
     }
 
-    public Subject getSubject(java.lang.Long id) {
+    public Employee getEmployee(java.lang.Long id) {
         return ejbFacade.find(id);
     }
 
-    @FacesConverter(forClass = Subject.class)
-    public static class SubjectControllerConverter implements Converter {
+    @FacesConverter(forClass=Employee.class)
+    public static class EmployeeControllerConverter implements Converter {
 
         @Override
         public Object getAsObject(FacesContext facesContext, UIComponent component, String value) {
             if (value == null || value.length() == 0) {
                 return null;
             }
-            SubjectController controller = (SubjectController) facesContext.getApplication().getELResolver().
-                    getValue(facesContext.getELContext(), null, "subjectController");
-            return controller.getSubject(getKey(value));
+            EmployeeController controller = (EmployeeController)facesContext.getApplication().getELResolver().
+                    getValue(facesContext.getELContext(), null, "employeeController");
+            return controller.getEmployee(getKey(value));
         }
 
         java.lang.Long getKey(String value) {
@@ -221,11 +223,11 @@ public class SubjectController implements Serializable {
             if (object == null) {
                 return null;
             }
-            if (object instanceof Subject) {
-                Subject o = (Subject) object;
+            if (object instanceof Employee) {
+                Employee o = (Employee) object;
                 return getStringKey(o.getId());
             } else {
-                throw new IllegalArgumentException("object " + object + " is of type " + object.getClass().getName() + "; expected type: " + Subject.class.getName());
+                throw new IllegalArgumentException("object " + object + " is of type " + object.getClass().getName() + "; expected type: "+Employee.class.getName());
             }
         }
 

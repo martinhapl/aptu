@@ -30,17 +30,17 @@
                     <h:outputText value="#{bundle.ViewSubjectLabel_numberOfWeeks}"/>
                     <h:outputText value="#{subjectController.selected.numberOfWeeks}" title="#{bundle.ViewSubjectTitle_numberOfWeeks}"/>
                     <h:outputText value="#{bundle.ViewSubjectLabel_language}"/>
-                    <h:outputText value="#{subjectController.selected.language}" title="#{bundle.ViewSubjectTitle_language}">
-                        <f:converter converterId = "net.hapl.aptu.jsf.converter.LangConverter" />
-                    </h:outputText>
-                    <h:outputText value="#{bundle.ViewSubjectLabel_termination}"/>
-                    <h:outputText value="#{subjectController.selected.termination}" title="#{bundle.ViewSubjectTitle_termination}">
-                        <f:converter converterId = "net.hapl.aptu.jsf.converter.SubjectTerminationConverter" />
-                    </h:outputText>
+                    <h:outputText value="#{subjectController.selected.language}" title="#{bundle.ViewSubjectTitle_language}"/>
                     <h:outputText value="#{bundle.ViewSubjectLabel_credits}"/>
                     <h:outputText value="#{subjectController.selected.credits}" title="#{bundle.ViewSubjectTitle_credits}"/>
                     <h:outputText value="#{bundle.ViewSubjectLabel_groupSize}"/>
                     <h:outputText value="#{subjectController.selected.groupSize}" title="#{bundle.ViewSubjectTitle_groupSize}"/>
+                    <h:outputText value="#{bundle.ViewSubjectLabel_terminationCredit}"/>
+                    <h:outputText value="#{subjectController.selected.terminationCredit}" title="#{bundle.ViewSubjectTitle_terminationCredit}"/>
+                    <h:outputText value="#{bundle.ViewSubjectLabel_terminationClasifCredit}"/>
+                    <h:outputText value="#{subjectController.selected.terminationClasifCredit}" title="#{bundle.ViewSubjectTitle_terminationClasifCredit}"/>
+                    <h:outputText value="#{bundle.ViewSubjectLabel_terminationExam}"/>
+                    <h:outputText value="#{subjectController.selected.terminationExam}" title="#{bundle.ViewSubjectTitle_terminationExam}"/>
                 </h:panelGrid>
                 <br />
                 <h:commandLink action="#{subjectController.destroyAndView}" value="#{bundle.ViewSubjectDestroyLink}"/>
