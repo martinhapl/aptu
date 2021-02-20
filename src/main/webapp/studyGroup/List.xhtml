@@ -42,19 +42,25 @@
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListStudyGroupTitle_formOfStudy}"/>
                             </f:facet>
-                            <h:outputText value="#{item.formOfStudy}"/>
+                            <h:outputText value="#{item.formOfStudy}">
+                                <f:converter converterId = "net.hapl.aptu.jsf.converter.FormOfStudyConverter" />
+                            </h:outputText>
                         </h:column>
                         <h:column>
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListStudyGroupTitle_language}"/>
                             </f:facet>
-                            <h:outputText value="#{item.language}"/>
+                            <h:outputText value="#{item.language}">
+                                <f:converter converterId = "net.hapl.aptu.jsf.converter.LangConverter" />
+                            </h:outputText>
                         </h:column>
                         <h:column>
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListStudyGroupTitle_studyProgram}"/>
                             </f:facet>
-                            <h:outputText value="#{item.studyProgram}"/>
+                            <h:outputText value="#{item.studyProgram}">
+                                <f:converter converterId = "net.hapl.aptu.jsf.converter.StudyProgramConverter" />
+                            </h:outputText>
                         </h:column>
                         <h:column>
                             <f:facet name="header">

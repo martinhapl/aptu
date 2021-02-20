@@ -15,18 +15,31 @@
             </h:panelGroup>
             <h:form>
                 <h:panelGrid columns="2">
-                    <h:outputLabel value="#{bundle.EditStudyGroupLabel_id}" for="id" />
-                    <h:inputText id="id" value="#{studyGroupController.selected.id}" title="#{bundle.EditStudyGroupTitle_id}" />
                     <h:outputLabel value="#{bundle.EditStudyGroupLabel_shortcut}" for="shortcut" />
                     <h:inputText id="shortcut" value="#{studyGroupController.selected.shortcut}" title="#{bundle.EditStudyGroupTitle_shortcut}" required="true" requiredMessage="#{bundle.EditStudyGroupRequiredMessage_shortcut}"/>
                     <h:outputLabel value="#{bundle.EditStudyGroupLabel_name}" for="name" />
                     <h:inputText id="name" value="#{studyGroupController.selected.name}" title="#{bundle.EditStudyGroupTitle_name}" required="true" requiredMessage="#{bundle.EditStudyGroupRequiredMessage_name}"/>
+
                     <h:outputLabel value="#{bundle.EditStudyGroupLabel_formOfStudy}" for="formOfStudy" />
-                    <h:inputText id="formOfStudy" value="#{studyGroupController.selected.formOfStudy}" title="#{bundle.EditStudyGroupTitle_formOfStudy}" required="true" requiredMessage="#{bundle.EditStudyGroupRequiredMessage_formOfStudy}"/>
+                    <h:selectOneMenu id="formOfStudy" value="#{studyGroupController.selected.formOfStudy}" title="#{bundle.EditStudyGroupTitle_formOfStudy}" required="true" requiredMessage="#{bundle.EditStudyGroupRequiredMessage_formOfStudy}">
+                        <f:selectItem itemValue="P" itemLabel="Presenční"/>
+                        <f:selectItem itemValue="K" itemLabel="Kombinovana"/>
+                        <f:converter converterId = "net.hapl.aptu.jsf.converter.FormOfStudyConverter" />
+                    </h:selectOneMenu>   
+
                     <h:outputLabel value="#{bundle.EditStudyGroupLabel_language}" for="language" />
-                    <h:inputText id="language" value="#{studyGroupController.selected.language}" title="#{bundle.EditStudyGroupTitle_language}" required="true" requiredMessage="#{bundle.EditStudyGroupRequiredMessage_language}"/>
+                    <h:selectOneMenu id="language" value="#{studyGroupController.selected.language}" title="#{bundle.EditStudyGroupTitle_language}" required="true" requiredMessage="#{bundle.EditStudyGroupRequiredMessage_language}">
+                        <f:selectItem itemValue="CS" itemLabel="Čeština"/>
+                        <f:selectItem itemValue="EN" itemLabel="Angličtina"/>
+                        <f:converter converterId = "net.hapl.aptu.jsf.converter.LangConverter" />
+                    </h:selectOneMenu>   
+                    
                     <h:outputLabel value="#{bundle.EditStudyGroupLabel_studyProgram}" for="studyProgram" />
-                    <h:inputText id="studyProgram" value="#{studyGroupController.selected.studyProgram}" title="#{bundle.EditStudyGroupTitle_studyProgram}" required="true" requiredMessage="#{bundle.EditStudyGroupRequiredMessage_studyProgram}"/>
+                    <h:selectOneMenu id="studyProgram" value="#{studyGroupController.selected.studyProgram}" title="#{bundle.EditStudyGroupTitle_studyProgram}" required="true" requiredMessage="#{bundle.EditStudyGroupRequiredMessage_studyProgram}">
+                        <f:selectItem itemValue="bc" itemLabel="Bc."/>
+                        <f:selectItem itemValue="mgr" itemLabel="Mgr."/>
+                        <f:converter converterId = "net.hapl.aptu.jsf.converter.StudyProgramConverter" />
+                    </h:selectOneMenu>  
                 </h:panelGrid>
                 <h:commandLink action="#{studyGroupController.update}" value="#{bundle.EditStudyGroupSaveLink}"/>
                 <br />

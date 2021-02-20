@@ -25,7 +25,6 @@ public abstract class AbstractFacade<T> {
     public void create(T entity) {
         //getEntityManager().merge(entity);
         getEntityManager().persist(entity);
-
         afterCreate(entity);
     }
 
@@ -33,12 +32,18 @@ public abstract class AbstractFacade<T> {
     
     public void edit(T entity) {
         getEntityManager().merge(entity);
+        afterEdit(entity);
     }
+    
+    protected abstract void afterEdit(T entity);
 
     public void remove(T entity) {
         getEntityManager().remove(getEntityManager().merge(entity));
+        afterRempve(entity);
     }
 
+    protected abstract void afterRempve(T entity);
+    
     public T find(Object id) {
         return getEntityManager().find(entityClass, id);
     }

@@ -56,5 +56,15 @@ public class StudyGroupFacade extends AbstractFacade<StudyGroup> {
         }
         
     }
+
+    @Override
+    protected void afterEdit(StudyGroup entity) {
+        // do nothing
+    }
+
+    @Override
+    protected void afterRempve(StudyGroup entity) {
+        // do nothing
+    }
     
 }

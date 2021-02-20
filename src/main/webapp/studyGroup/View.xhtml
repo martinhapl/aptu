@@ -21,12 +21,21 @@
                     <h:outputText value="#{studyGroupController.selected.shortcut}" title="#{bundle.ViewStudyGroupTitle_shortcut}"/>
                     <h:outputText value="#{bundle.ViewStudyGroupLabel_name}"/>
                     <h:outputText value="#{studyGroupController.selected.name}" title="#{bundle.ViewStudyGroupTitle_name}"/>
+                    
                     <h:outputText value="#{bundle.ViewStudyGroupLabel_formOfStudy}"/>
-                    <h:outputText value="#{studyGroupController.selected.formOfStudy}" title="#{bundle.ViewStudyGroupTitle_formOfStudy}"/>
+                    <h:outputText value="#{studyGroupController.selected.formOfStudy}" title="#{bundle.ViewStudyGroupTitle_formOfStudy}">
+                        <f:converter converterId = "net.hapl.aptu.jsf.converter.FormOfStudyConverter" />
+                    </h:outputText>
+                    
                     <h:outputText value="#{bundle.ViewStudyGroupLabel_language}"/>
-                    <h:outputText value="#{studyGroupController.selected.language}" title="#{bundle.ViewStudyGroupTitle_language}"/>
+                    <h:outputText value="#{studyGroupController.selected.language}" title="#{bundle.ViewStudyGroupTitle_language}">
+                        <f:converter converterId = "net.hapl.aptu.jsf.converter.LangConverter" />
+                    </h:outputText>
+                    
                     <h:outputText value="#{bundle.ViewStudyGroupLabel_studyProgram}"/>
-                    <h:outputText value="#{studyGroupController.selected.studyProgram}" title="#{bundle.ViewStudyGroupTitle_studyProgram}"/>
+                    <h:outputText value="#{studyGroupController.selected.studyProgram}" title="#{bundle.ViewStudyGroupTitle_studyProgram}">
+                        <f:converter converterId = "net.hapl.aptu.jsf.converter.StudyProgramConverter" />
+                    </h:outputText>
                 </h:panelGrid>
                 <br />
                 <h:commandLink action="#{studyGroupController.destroyAndView}" value="#{bundle.ViewStudyGroupDestroyLink}"/>

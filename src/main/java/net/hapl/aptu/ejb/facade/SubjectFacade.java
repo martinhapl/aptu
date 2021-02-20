@@ -33,5 +33,15 @@ public class SubjectFacade extends AbstractFacade<Subject> {
     protected void afterCreate(Subject entity) {
         // do nothing
     }
+
+    @Override
+    protected void afterEdit(Subject entity) {
+        // do nothing
+    }
+
+    @Override
+    protected void afterRempve(Subject entity) {
+        // do nothing
+    }
     
 }

@@ -33,5 +33,15 @@ public class EmployeeFacade extends AbstractFacade<Employee> {
     protected void afterCreate(Employee entity) {
         // do nothing
     }
+
+    @Override
+    protected void afterEdit(Employee entity) {
+        // do nothing
+    }
+
+    @Override
+    protected void afterRempve(Employee entity) {
+        // do nothing
+    }
     
 }

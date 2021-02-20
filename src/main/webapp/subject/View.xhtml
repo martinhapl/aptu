@@ -30,7 +30,10 @@
                     <h:outputText value="#{bundle.ViewSubjectLabel_numberOfWeeks}"/>
                     <h:outputText value="#{subjectController.selected.numberOfWeeks}" title="#{bundle.ViewSubjectTitle_numberOfWeeks}"/>
                     <h:outputText value="#{bundle.ViewSubjectLabel_language}"/>
-                    <h:outputText value="#{subjectController.selected.language}" title="#{bundle.ViewSubjectTitle_language}"/>
+                    <h:outputText value="#{subjectController.selected.language}" title="#{bundle.ViewSubjectTitle_language}">
+                        <f:converter converterId = "net.hapl.aptu.jsf.converter.LangConverter" />
+                    </h:outputText>
+                    
                     <h:outputText value="#{bundle.ViewSubjectLabel_credits}"/>
                     <h:outputText value="#{subjectController.selected.credits}" title="#{bundle.ViewSubjectTitle_credits}"/>
                     <h:outputText value="#{bundle.ViewSubjectLabel_groupSize}"/>

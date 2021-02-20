@@ -8,8 +8,10 @@
     <class>net.hapl.aptu.ejb.entity.StudyGroup</class>
     <class>net.hapl.aptu.ejb.entity.StudyGroupDetail</class>
     <properties>
-      <property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>
+      <property name="javax.persistence.schema-generation.database.action" value="none"/>
       <!--
+      drop-and-create
+      
       <property name="jboss.entity.manager.jndi.name" value="java:/EntityManager/erms"/>
             <property name="hibernate.dialect_resolvers" value="cz.mit_consulting.erms.util.startup.MyDialectResolver"/>
             <property name="hibernate.hbm2ddl.auto" value="none"/>

@@ -15,8 +15,6 @@
             </h:panelGroup>
             <h:form>
                 <h:panelGrid columns="2">
-                    <h:outputLabel value="#{bundle.EditSubjectLabel_id}" for="id" />
-                    <h:inputText id="id" value="#{subjectController.selected.id}" title="#{bundle.EditSubjectTitle_id}" />
                     <h:outputLabel value="#{bundle.EditSubjectLabel_shortcut}" for="shortcut" />
                     <h:inputText id="shortcut" value="#{subjectController.selected.shortcut}" title="#{bundle.EditSubjectTitle_shortcut}" required="true" requiredMessage="#{bundle.EditSubjectRequiredMessage_shortcut}"/>
                     <h:outputLabel value="#{bundle.EditSubjectLabel_name}" for="name" />
@@ -30,7 +28,12 @@
                     <h:outputLabel value="#{bundle.EditSubjectLabel_numberOfWeeks}" for="numberOfWeeks" />
                     <h:inputText id="numberOfWeeks" value="#{subjectController.selected.numberOfWeeks}" title="#{bundle.EditSubjectTitle_numberOfWeeks}" required="true" requiredMessage="#{bundle.EditSubjectRequiredMessage_numberOfWeeks}"/>
                     <h:outputLabel value="#{bundle.EditSubjectLabel_language}" for="language" />
-                    <h:inputText id="language" value="#{subjectController.selected.language}" title="#{bundle.EditSubjectTitle_language}" required="true" requiredMessage="#{bundle.EditSubjectRequiredMessage_language}"/>
+                    <h:selectOneMenu id="language" value="#{subjectController.selected.language}" title="#{bundle.EditSubjectTitle_language}" required="true" requiredMessage="#{bundle.EditSubjectRequiredMessage_language}">
+                        <f:selectItem itemValue="CS" itemLabel="Čeština"/>
+                        <f:selectItem itemValue="EN" itemLabel="Angličtina"/>
+                        <f:converter converterId = "net.hapl.aptu.jsf.converter.LangConverter" />
+                    </h:selectOneMenu> 
+                    
                     <h:outputLabel value="#{bundle.EditSubjectLabel_credits}" for="credits" />
                     <h:inputText id="credits" value="#{subjectController.selected.credits}" title="#{bundle.EditSubjectTitle_credits}" required="true" requiredMessage="#{bundle.EditSubjectRequiredMessage_credits}"/>
                     <h:outputLabel value="#{bundle.EditSubjectLabel_groupSize}" for="groupSize" />
