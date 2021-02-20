@@ -24,8 +24,51 @@ public class Enums {
                 return "Angličtina";
             }
         };
-        
     }
     
+    public enum FormOfStudy {
+        P {
+            @Override
+            public String toString() {
+                return "Presenční";
+            }
+        },
+        K {
+            @Override
+            public String toString() {
+                return "Kombinovaná";
+            }
+        };
+    }
+    
+    public enum StudyProgram {
+        bc {
+            @Override
+            public String toString() {
+                return "Bc.";
+            }
+        },
+        mgr {
+            @Override
+            public String toString() {
+                return "Mgr.";
+            }
+        };
+    }    
+    
+     public enum Semester {
+        LS {
+            @Override
+            public String toString() {
+                return "Letní";
+            }
+        },
+        ZS {
+            @Override
+            public String toString() {
+                return "Zimní";
+            }
+        };
+    }    
     
 }

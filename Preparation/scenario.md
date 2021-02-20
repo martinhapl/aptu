@@ -40,7 +40,8 @@ c) Úvazkový list
     Pracovni stitek je prirazeni predmetu do skupinky
         - predmet muze byt ve vice skupinkach
         - v ruznych spupinkach muze byt v rozdilnych semestrech a rocnicich
-        - podle poctu studentu v rocniku a semestru je potreba generovat prislusny pocet stiku v zavislosti na "max. velikost skupiny" v predmetu
+        - podle poctu studentu v rocniku a semestru je potreba generovat prislusny pocet stiku v zavislosti na maximalni velikost skupiny "subject.groupsize", 
+          rozdeleni na vice stitku podle poctu se provede pro cviceni a seminar pro prednasdku vznika vzdy jen jeden stitek pokud
 
     zobrazeni planu vyuky
      - vbyuka - pracovnich bodu

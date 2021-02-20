@@ -5,6 +5,8 @@
     <jta-data-source>java:/jdbc/aptu</jta-data-source>
     <class>net.hapl.aptu.ejb.entity.Employee</class>
     <class>net.hapl.aptu.ejb.entity.Subject</class>
+    <class>net.hapl.aptu.ejb.entity.StudyGroup</class>
+    <class>net.hapl.aptu.ejb.entity.StudyGroupDetail</class>
     <properties>
       <property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>
       <!--

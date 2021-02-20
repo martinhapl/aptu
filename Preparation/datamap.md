@@ -6,10 +6,10 @@ Subject:
     private int hoursOfSeminars;
     private int hoursOfExercises;
     private int numberOfWeeks;
-    private Enums.Lang language;  // en, cs
-    private boolean terminationCredit; //  zapocet
-    private boolean terminationClasifCredit; // klasifikovany zapocet
-    private boolean terminationExam; // zkouska
+    private Enums.Lang language;  		// en, cs
+    private boolean terminationCredit; 		//  zapocet
+    private boolean terminationClasifCredit; 	// klasifikovany zapocet
+    private boolean terminationExam; 		// zkouska
     private int credits;
     private int groupSize;
 
@@ -19,9 +19,24 @@ Employee:
     private String surname;
     private String phone;
     private String mobile;
-    private String email;       // unique
+    private String email;       		// unique
     private boolean doctoralStudent;
-    private double workingTime;  // roizsah 0 az 1
+    private double workingTime;  		// roizsah 0 az 1
+
+StudyGroup
+    private Long id;
+    private String shortcut;
+    private String name;
+    private Enums.FormOfStudy formOfStudy;	// P, K
+    private Enums.Lang language;		// en, cs
+    private Enums.StudyProgram studyProgram;	// bc, mgr
+
+StudyGroupDetail
+    private Long id;
+    private int yearOfStudy;			// 1, 2, 3
+    private Enums.Semester semester;  		// LS, ZS
+    private int numberOfStudents;
+    private StudyGroup studyGroup;
 
 
 CREATE TABLE subject
@@ -55,3 +70,45 @@ CREATE TABLE employee
   working_time double precision NOT NULL,
   CONSTRAINT employee_pkey PRIMARY KEY (id)
 )
+
+CREATE TABLE studygroup
+(
+
+  id bigint NOT NULL,
+
+  form_of_study character varying(1) NOT NULL,
+
+  language character varying(2) NOT NULL,
+
+  name character varying(255) NOT NULL,
+
+  shortcut character varying(20) NOT NULL,
+
+  study_program character varying(3) NOT NULL,
+
+  CONSTRAINT studygroup_pkey PRIMARY KEY (id)
+
+)
+
+CREATE TABLE studygroupdetail
+(
+
+  id bigint NOT NULL,
+
+  number_of_students integer NOT NULL,
+
+  semester character varying(2) NOT NULL,
+
+  year_of_study integer NOT NULL,
+
+  study_group_id bigint NOT NULL,
+
+  CONSTRAINT studygroupdetail_pkey PRIMARY KEY (id),
+
+  CONSTRAINT fkkcs0x214p5vh4dr6ca256tyuy FOREIGN KEY (study_group_id)
+      REFERENCES studygroup (id) MATCH SIMPLE
+
+      ON UPDATE NO ACTION ON DELETE NO ACTION
+
+)
+

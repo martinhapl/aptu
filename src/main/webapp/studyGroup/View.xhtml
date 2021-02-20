@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewStudyGroupTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewStudyGroupLabel_id}"/>
+                    <h:outputText value="#{studyGroupController.selected.id}" title="#{bundle.ViewStudyGroupTitle_id}"/>
+                    <h:outputText value="#{bundle.ViewStudyGroupLabel_shortcut}"/>
+                    <h:outputText value="#{studyGroupController.selected.shortcut}" title="#{bundle.ViewStudyGroupTitle_shortcut}"/>
+                    <h:outputText value="#{bundle.ViewStudyGroupLabel_name}"/>
+                    <h:outputText value="#{studyGroupController.selected.name}" title="#{bundle.ViewStudyGroupTitle_name}"/>
+                    <h:outputText value="#{bundle.ViewStudyGroupLabel_formOfStudy}"/>
+                    <h:outputText value="#{studyGroupController.selected.formOfStudy}" title="#{bundle.ViewStudyGroupTitle_formOfStudy}"/>
+                    <h:outputText value="#{bundle.ViewStudyGroupLabel_language}"/>
+                    <h:outputText value="#{studyGroupController.selected.language}" title="#{bundle.ViewStudyGroupTitle_language}"/>
+                    <h:outputText value="#{bundle.ViewStudyGroupLabel_studyProgram}"/>
+                    <h:outputText value="#{studyGroupController.selected.studyProgram}" title="#{bundle.ViewStudyGroupTitle_studyProgram}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{studyGroupController.destroyAndView}" value="#{bundle.ViewStudyGroupDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewStudyGroupEditLink}"/>
+                <br />
+                <h:commandLink action="#{studyGroupController.prepareCreate}" value="#{bundle.ViewStudyGroupCreateLink}" />
+                <br />
+                <h:commandLink action="#{studyGroupController.prepareList}" value="#{bundle.ViewStudyGroupShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewStudyGroupIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

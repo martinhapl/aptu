@@ -28,5 +28,10 @@ public class SubjectFacade extends AbstractFacade<Subject> {
     public SubjectFacade() {
         super(Subject.class);
     }
+
+    @Override
+    protected void afterCreate(Subject entity) {
+        // do nothing
+    }
     
 }

@@ -28,5 +28,10 @@ public class EmployeeFacade extends AbstractFacade<Employee> {
     public EmployeeFacade() {
         super(Employee.class);
     }
+
+    @Override
+    protected void afterCreate(Employee entity) {
+        // do nothing
+    }
     
 }

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateStudyGroupTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateStudyGroupLabel_shortcut}" for="shortcut" />
+                    <h:inputText id="shortcut" value="#{studyGroupController.selected.shortcut}" title="#{bundle.CreateStudyGroupTitle_shortcut}" required="true" requiredMessage="#{bundle.CreateStudyGroupRequiredMessage_shortcut}"/>
+                    <h:outputLabel value="#{bundle.CreateStudyGroupLabel_name}" for="name" />
+                    <h:inputText id="name" value="#{studyGroupController.selected.name}" title="#{bundle.CreateStudyGroupTitle_name}" required="true" requiredMessage="#{bundle.CreateStudyGroupRequiredMessage_name}"/>
+                    
+                    <h:outputLabel value="#{bundle.CreateStudyGroupLabel_formOfStudy}" for="formOfStudy" />
+                    <h:selectOneMenu id="formOfStudy" value="#{studyGroupController.selected.formOfStudy}" title="#{bundle.CreateStudyGroupTitle_formOfStudy}" required="true" requiredMessage="#{bundle.CreateStudyGroupRequiredMessage_formOfStudy}">
+                        <f:selectItem itemValue="P" itemLabel="Presenční"/>
+                        <f:selectItem itemValue="K" itemLabel="Kombinovana"/>
+                        <f:converter converterId = "net.hapl.aptu.jsf.converter.FormOfStudyConverter" />
+                    </h:selectOneMenu>    
+                   
+                    
+                    <h:outputLabel value="#{bundle.CreateStudyGroupLabel_language}" for="language" />  
+                    <h:selectOneMenu id="language" value="#{studyGroupController.selected.language}" title="#{bundle.CreateStudyGroupTitle_language}" required="true" requiredMessage="#{bundle.CreateStudyGroupRequiredMessage_language}">
+                        <f:selectItem itemValue="CS" itemLabel="Čeština"/>
+                        <f:selectItem itemValue="EN" itemLabel="Angličtina"/>
+                        <f:converter converterId = "net.hapl.aptu.jsf.converter.LangConverter" />
+                    </h:selectOneMenu>    
+                    
+                    <h:outputLabel value="#{bundle.CreateStudyGroupLabel_studyProgram}" for="studyProgram" />
+                    <h:selectOneMenu id="studyProgram" value="#{studyGroupController.selected.studyProgram}" title="#{bundle.CreateStudyGroupTitle_studyProgram}" required="true" requiredMessage="#{bundle.CreateStudyGroupRequiredMessage_studyProgram}">
+                        <f:selectItem itemValue="bc" itemLabel="Bc."/>
+                        <f:selectItem itemValue="mgr" itemLabel="Mgr."/>
+                        <f:converter converterId = "net.hapl.aptu.jsf.converter.StudyProgramConverter" />
+                    </h:selectOneMenu>    
+
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{studyGroupController.create}" value="#{bundle.CreateStudyGroupSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{studyGroupController.prepareList}" value="#{bundle.CreateStudyGroupShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateStudyGroupIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditStudyGroupTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditStudyGroupLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{studyGroupController.selected.id}" title="#{bundle.EditStudyGroupTitle_id}" />
+                    <h:outputLabel value="#{bundle.EditStudyGroupLabel_shortcut}" for="shortcut" />
+                    <h:inputText id="shortcut" value="#{studyGroupController.selected.shortcut}" title="#{bundle.EditStudyGroupTitle_shortcut}" required="true" requiredMessage="#{bundle.EditStudyGroupRequiredMessage_shortcut}"/>
+                    <h:outputLabel value="#{bundle.EditStudyGroupLabel_name}" for="name" />
+                    <h:inputText id="name" value="#{studyGroupController.selected.name}" title="#{bundle.EditStudyGroupTitle_name}" required="true" requiredMessage="#{bundle.EditStudyGroupRequiredMessage_name}"/>
+                    <h:outputLabel value="#{bundle.EditStudyGroupLabel_formOfStudy}" for="formOfStudy" />
+                    <h:inputText id="formOfStudy" value="#{studyGroupController.selected.formOfStudy}" title="#{bundle.EditStudyGroupTitle_formOfStudy}" required="true" requiredMessage="#{bundle.EditStudyGroupRequiredMessage_formOfStudy}"/>
+                    <h:outputLabel value="#{bundle.EditStudyGroupLabel_language}" for="language" />
+                    <h:inputText id="language" value="#{studyGroupController.selected.language}" title="#{bundle.EditStudyGroupTitle_language}" required="true" requiredMessage="#{bundle.EditStudyGroupRequiredMessage_language}"/>
+                    <h:outputLabel value="#{bundle.EditStudyGroupLabel_studyProgram}" for="studyProgram" />
+                    <h:inputText id="studyProgram" value="#{studyGroupController.selected.studyProgram}" title="#{bundle.EditStudyGroupTitle_studyProgram}" required="true" requiredMessage="#{bundle.EditStudyGroupRequiredMessage_studyProgram}"/>
+                </h:panelGrid>
+                <h:commandLink action="#{studyGroupController.update}" value="#{bundle.EditStudyGroupSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditStudyGroupViewLink}"/>
+                <br />
+                <h:commandLink action="#{studyGroupController.prepareList}" value="#{bundle.EditStudyGroupShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditStudyGroupIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
